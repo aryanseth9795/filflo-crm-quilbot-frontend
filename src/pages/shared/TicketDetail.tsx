@@ -312,6 +312,10 @@ export default function TicketDetail() {
   const { user } = useAuth();
   const { data: ticket, isLoading } = useTicket(id!);
   const { data: developers } = useDevelopers();
+  // Must be called before any early return — same `id` from useParams keys the
+  // query, so we don't need `ticket._id` here. The hook itself short-circuits
+  // via `enabled: !!id`.
+  const { data: timeline } = useTicketTimeline(id!);
 
   if (isLoading) return <PageLoader />;
   if (!ticket) return (
@@ -330,7 +334,6 @@ export default function TicketDetail() {
 
   // First occurrence wins: a ticket can have multiple pr_raised events across
   // rejection/reopen revisions — the earliest is the canonical raise time.
-  const { data: timeline } = useTicketTimeline(ticket._id);
   const prRaisedAt = timeline?.find((e: any) => e.event === 'pr_raised')?.timestamp;
   const prMergedAt = timeline?.find((e: any) => e.event === 'pr_merged')?.timestamp;
 
