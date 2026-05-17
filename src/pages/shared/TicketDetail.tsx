@@ -328,6 +328,12 @@ export default function TicketDetail() {
   const closer = ticket.closedBy as any;
   const mainDev = project?.mainDeveloper as any;
 
+  // First occurrence wins: a ticket can have multiple pr_raised events across
+  // rejection/reopen revisions — the earliest is the canonical raise time.
+  const { data: timeline } = useTicketTimeline(ticket._id);
+  const prRaisedAt = timeline?.find((e: any) => e.event === 'pr_raised')?.timestamp;
+  const prMergedAt = timeline?.find((e: any) => e.event === 'pr_merged')?.timestamp;
+
   return (
     <div className="w-[90%] animate-fade-in">
       {/* Back */}
@@ -389,6 +395,8 @@ export default function TicketDetail() {
               <Field icon={Calendar} label="Required Delivery" value={ticket.requiredDeliveryDays ? `${ticket.requiredDeliveryDays} day(s)` : null} />
               <Field icon={Clock} label="Accepted At" value={ticket.acceptedAt ? formatDate(ticket.acceptedAt) : null} />
               <Field icon={Play} label="Work Started" value={ticket.devStartedAt ? formatDate(ticket.devStartedAt) : null} />
+              <Field icon={GitPullRequest} label="PR Raised" value={prRaisedAt ? formatDate(prRaisedAt) : null} />
+              <Field icon={GitMerge} label="PR Merged" value={prMergedAt ? formatDate(prMergedAt) : null} />
               <Field icon={Timer} label="Rollout ETA" value={ticket.devRolloutTime ? formatDate(ticket.devRolloutTime) : null} />
               <Field icon={CheckCircle2} label="Closed At" value={ticket.closedAt ? formatDate(ticket.closedAt) : null} />
               <Field icon={Clock} label="Resolution Time" value={ticket.resolutionHrs != null ? `${ticket.resolutionHrs} hrs` : null} />

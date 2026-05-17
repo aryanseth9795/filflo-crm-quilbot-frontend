@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+
+const envmodePROD  = true;
+const baseURL = envmodePROD ? "https://filfo-crm-quilbot-backend.onrender.com/api" : "http://localhost:5000/api";
+
 const api = axios.create({
-  baseURL: 'https://filfo-crm-quilbot-backend.onrender.com/api',
+  baseURL: baseURL,
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 });
