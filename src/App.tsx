@@ -13,6 +13,7 @@ import TicketQueue from './pages/admin/TicketQueue';
 import Projects from './pages/admin/Projects';
 import ProjectDetail from './pages/admin/ProjectDetail';
 import Developers from './pages/admin/Developers';
+import Users from './pages/admin/Users';
 import Reports from './pages/admin/Reports';
 import CompanyReport from './pages/admin/CompanyReport';
 import HappinessIndex from './pages/admin/HappinessIndex';
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/admin/projects" element={<Projects />} />
             <Route path="/admin/projects/:id" element={<ProjectDetail />} />
             <Route path="/admin/developers" element={<Developers />} />
+            <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/reports" element={<Reports />} />
             <Route path="/admin/reports/company/:id" element={<CompanyReport />} />
             <Route path="/admin/happiness-index" element={<HappinessIndex />} />

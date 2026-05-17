@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Ticket, FolderOpen, Users, BarChart2, LogOut, Headphones, Code2, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Ticket, FolderOpen, Users, BarChart2, LogOut, Headphones, Code2, ChevronRight, UserCog } from 'lucide-react';
 import { useAuthStore } from '@/stores/auth.store';
 import api from '@/lib/api';
 import { useQueryClient } from '@tanstack/react-query';
@@ -16,6 +16,7 @@ const navByRole = {
     { to: '/admin/tickets', label: 'Ticket Queue', icon: Ticket },
     { to: '/admin/projects', label: 'Projects', icon: FolderOpen },
     { to: '/admin/developers', label: 'Developers', icon: Users },
+    { to: '/admin/users', label: 'User Management', icon: UserCog },
     { to: '/admin/reports', label: 'Reports', icon: BarChart2 },
     { to: '/admin/happiness-index', label: 'Happiness Index', icon: BarChart2 },
   ],
