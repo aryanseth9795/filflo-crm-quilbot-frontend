@@ -355,7 +355,7 @@ export default function TicketDetail() {
                 </div>
                 {/* Type label */}
                 <p className="text-xs text-[var(--color-ink-3)]">
-                  {REQUEST_TYPE_LABELS[ticket.requestType]} · {STATUS_LABELS[ticket.status]}
+                  {(REQUEST_TYPE_LABELS as Record<string, string>)[ticket.requestType]} · {(STATUS_LABELS as Record<string, string>)[ticket.status]}
                 </p>
               </div>
               <p className="text-xs text-[var(--color-ink-4)]">{formatRelative(ticket.createdAt)}</p>

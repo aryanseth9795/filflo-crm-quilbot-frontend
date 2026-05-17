@@ -8,7 +8,7 @@ import { PageLoader, ButtonSpinner } from '@/components/common/LoadingSpinner';
 import { formatDate, formatBytes } from '@/lib/utils';
 import {
   ArrowLeft, CheckCircle2, XCircle, UserCheck, GitMerge, GitPullRequestClosed,
-  Paperclip, RotateCcw, Calendar, Clock, User, FileText, ExternalLink, X
+  Paperclip, RotateCcw, FileText, ExternalLink, X
 } from 'lucide-react';
 import type { Attachment } from '@/types/ticket';
 

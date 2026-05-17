@@ -22,7 +22,7 @@ const STATUS_TABS: { value: TicketStatus | 'all'; label: string }[] = [
 
 const REQUEST_TYPE_FILTERS: { value: TicketRequestType | 'all'; label: string }[] = [
   { value: 'all', label: 'All Types' },
-  ...Object.entries(REQUEST_TYPE_LABELS).map(([k, v]) => ({ value: k as TicketRequestType, label: v })),
+  ...Object.entries(REQUEST_TYPE_LABELS).map(([k, v]) => ({ value: k as TicketRequestType, label: v as string })),
 ];
 
 const PRIORITY_COLORS: Record<string, string> = {

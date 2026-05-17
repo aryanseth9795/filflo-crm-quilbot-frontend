@@ -115,7 +115,7 @@ export default function CompanyReport() {
           <div className="h-48">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={statusPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} paddingAngle={2} dataKey="value" label={({ name, percent }) => percent > 0.05 ? name : ''} labelLine={false} style={{ fontSize: '10px' }}>
+                <Pie data={statusPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} paddingAngle={2} dataKey="value" label={({ name, percent }) => (percent ?? 0) > 0.05 ? name : ''} labelLine={false} style={{ fontSize: '10px' }}>
                   {statusPieData.map((_: any, i: number) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                 </Pie>
                 <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-border)', fontSize: '12px' }} />
@@ -129,7 +129,7 @@ export default function CompanyReport() {
           <div className="h-48">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={priorityPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} paddingAngle={2} dataKey="value" label={({ name, percent }) => percent > 0.05 ? name : ''} labelLine={false} style={{ fontSize: '10px' }}>
+                <Pie data={priorityPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} paddingAngle={2} dataKey="value" label={({ name, percent }) => (percent ?? 0) > 0.05 ? name : ''} labelLine={false} style={{ fontSize: '10px' }}>
                   {priorityPieData.map((e: any, i: number) => <Cell key={i} fill={e.name === 'P0' ? 'var(--color-danger)' : e.name === 'P1' ? 'var(--color-accent)' : e.name === 'P2' ? 'var(--color-yellow)' : 'var(--color-green)'} />)}
                 </Pie>
                 <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-border)', fontSize: '12px' }} />

@@ -116,8 +116,8 @@ export default function Reports() {
           <div className="h-48 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={statusPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} fill="#8884d8" paddingAngle={2} dataKey="value" label={({ name, percent }) => percent > 0.05 ? `${name}` : ''} labelLine={false} style={{ fontSize: '10px' }}>
-                  {statusPieData.map((_, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
+                <Pie data={statusPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} fill="#8884d8" paddingAngle={2} dataKey="value" label={({ name, percent }) => (percent ?? 0) > 0.05 ? `${name}` : ''} labelLine={false} style={{ fontSize: '10px' }}>
+                  {statusPieData.map((_: any, index: number) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
                 </Pie>
                 <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-border)', fontSize: '12px', fontWeight: 500 }} />
               </PieChart>
@@ -130,8 +130,8 @@ export default function Reports() {
           <div className="h-48 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={priorityPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} fill="#8884d8" paddingAngle={2} dataKey="value" label={({ name, percent }) => percent > 0.05 ? `${name}` : ''} labelLine={false} style={{ fontSize: '10px' }}>
-                  {priorityPieData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.name === 'P0' ? 'var(--color-danger)' : entry.name === 'P1' ? 'var(--color-accent)' : entry.name === 'P2' ? 'var(--color-yellow)' : 'var(--color-green)'} />)}
+                <Pie data={priorityPieData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} fill="#8884d8" paddingAngle={2} dataKey="value" label={({ name, percent }) => (percent ?? 0) > 0.05 ? `${name}` : ''} labelLine={false} style={{ fontSize: '10px' }}>
+                  {priorityPieData.map((entry: any, index: number) => <Cell key={`cell-${index}`} fill={entry.name === 'P0' ? 'var(--color-danger)' : entry.name === 'P1' ? 'var(--color-accent)' : entry.name === 'P2' ? 'var(--color-yellow)' : 'var(--color-green)'} />)}
                 </Pie>
                 <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-border)', fontSize: '12px', fontWeight: 500 }} />
               </PieChart>
